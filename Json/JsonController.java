@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,24 +12,18 @@ import java.util.List;
 
 public class JsonController {
     private Gson gson;
-    private String path;     //path aqui
 
     public JsonController() {
     }
 
-    public JsonEntrada leitura() throws IOException {
+    public JsonEntrada leitura(String path) throws IOException {
         Gson gson1 = new GsonBuilder().setPrettyPrinting().create();
 
-        BufferedReader br = Files.newBufferedReader(Paths.get(path));
+        JsonEntrada input = gson1.fromJson(new FileReader(path), JsonEntrada.class);
 
-        //nao sei como funciona mas funciona 👍
-        JsonEntrada input = gson.fromJson(br, JsonEntrada.class);
+
 
         return input;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 
     public void escrita(List lista){

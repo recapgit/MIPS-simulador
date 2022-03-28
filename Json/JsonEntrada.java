@@ -3,8 +3,8 @@ package Json;
 import java.util.List;
 
 public class JsonEntrada {
-    private String config;
-    private String data;
+    private Config config;
+    private Data data;
     private List<String> text;
 
     public JsonEntrada() {
